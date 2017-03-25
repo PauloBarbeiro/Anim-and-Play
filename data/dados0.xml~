@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monstros qtd="5">
+  <monstro>
+    <imagens lista="bixo-0-seq-0.png,bixo-0-seq-1.png,bixo-0-seq-2.png,bixo-0-seq-3.png,bixo-0-seq-4.png,bixo-0-seq-5.png,bixo-0-seq-6.png,bixo-0-seq-7.png,bixo-0-seq-8.png,"/>
+  </monstro>
+  <monstro>
+    <imagens lista="bixo-1-seq-0.png,bixo-1-seq-1.png,bixo-1-seq-2.png,"/>
+  </monstro>
+  <monstro>
+    <imagens lista="bixo-2-seq-0.png,bixo-2-seq-1.png,bixo-2-seq-2.png,bixo-2-seq-3.png,"/>
+  </monstro>
+  <monstro>
+    <imagens lista="bixo-2-seq-0.png,bixo-2-seq-1.png,bixo-2-seq-2.png,bixo-2-seq-3.png,"/>
+  </monstro>
+  <monstro>
+    <imagens lista="bixo-4-seq-0.png,bixo-4-seq-1.png,bixo-4-seq-2.png,bixo-4-seq-3.png,bixo-4-seq-4.png,bixo-4-seq-5.png,bixo-4-seq-6.png,bixo-4-seq-7.png,bixo-4-seq-8.png,bixo-4-seq-9.png,bixo-4-seq-10.png,bixo-4-seq-11.png,bixo-4-seq-12.png,bixo-4-seq-13.png,bixo-4-seq-14.png,bixo-4-seq-15.png,"/>
+  </monstro>
+</monstros>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monstros qtd="2">
+  <monstro>
+    <imagens lista="bixo-0-seq-0.png,bixo-0-seq-1.png,bixo-0-seq-2.png,bixo-0-seq-4.png,bixo-0-seq-5.png,bixo-0-seq-6.png,"/>
+  </monstro>
+  <monstro>
+    <imagens lista="bixo-1-seq-0.png,bixo-1-seq-1.png,bixo-1-seq-2.png,bixo-1-seq-3.png,bixo-1-seq-4.png,bixo-1-seq-5.png,bixo-1-seq-6.png,"/>
+  </monstro>
+</monstros>

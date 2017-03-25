@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<dados>
+	<monstros qtd="0">
+		<monstro>
+			<imagens>"img-00.png,img-01.png,img-03.png,img-04.png"</imagens>
+			<mascara>0,0,0,0,0,255,255,255,255,255,255,255,255</mascara>
+		</monstro>
+	</monstros>
+</dados>
