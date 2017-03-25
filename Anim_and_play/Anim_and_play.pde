@@ -20,8 +20,9 @@ int[] previousFrame;
 
 BixoMaker maker;                 //--- BIXOMAKER
 BixoPlay player;                 //--- BIXOPLAYER
-//proxml.XMLElement xmlFile;
-//XMLInOut xmlInOut;
+
+XML xmlFile;
+XML xmlInOut;
 int qtdBixos;
 
 
@@ -39,15 +40,13 @@ int qtdBixos;
 //int margem = 20;
 
 //GUI
-//Botao bt_captura;
-//Botao bt_criarBixo;
-//Botao bt_brincar;
-//Botao bt_voltar;
+Botao bt_captura;
+Botao bt_criarBixo;
+Botao bt_brincar;
+Botao bt_voltar;
 
 
-void setup()
-{
-
+void setup(){
   //size( 640, 480);
   size( 960, 540);
   //size(1024,768);
@@ -77,7 +76,7 @@ void setup()
   
   //numPixels = capVideo.width * capVideo.height;
   numPixels = 320 * 180;
-  println("NumPixels: "+numPixels);
+  //println("NumPixels: "+numPixels);
   
   // Create an array to store the previously captured frame
   previousFrame = new int[numPixels];
@@ -86,25 +85,25 @@ void setup()
   
   
   //----------------------------------------- BIXOPLAYER
-  //player = new BixoPlay();
+  player = new BixoPlay();
   
   
   //----------------------------------------- BIXOMAKER
-  /*
-  xmlInOut = new XMLInOut(this);
+  
+  //xmlInOut = new XMLInOut(this);
   try{
-    xmlInOut.loadElement("dados0.xml");
+    xmlInOut = loadXML("dados0.xml");
     println("Carregou XML com sucesso.");
   }
   catch(Exception e){
     println("ERRO: Ao carregar XML -> dados || "+e);
-    xmlEvent(new proxml.XMLElement("dados"));
+    //xmlEvent(new proxml.XMLElement("dados"));
   }//*/
   maker = new BixoMaker(); 
   
   
   // ---------------------------------------- GUI
-  /*
+  
   bt_captura = new Botao(int(width*0.05), int(height*0.9) , 150,30 , 'f', "Criar Bixos");
   bt_criarBixo = new Botao( int(width*0.3), int(height*0.9) , 150,30, 'm', "Concluir");
   bt_brincar = new Botao ( int(width*0.5), int(height*0.9), 150,30, 'c', "Cancelar" );
@@ -128,27 +127,28 @@ void draw(){
   //startDT();
   
   if( capVideo.available() == true){
+    
     capVideo.read();
-    //capVideo.resize(width,height);
     captureAction(); // Captura, Diferenca, Remember
     captureBlobs(); // FastBlur, Deteccao, Desenho
     
     if(!maker.ativado){
-      //renderVideoCapture();
-    }
-    //if(player.canRun){
-    //  player.run();
-    //} 
-  }
-  //image(capVideo, 0, 0);
-  // GUI
-  //bt_captura.run();
+      renderVideoCapture();
+    }//*/
     
-  //if(maker.ativado){
-  //  bt_criarBixo.run();
-  //  maker.run();
-  //  bt_brincar.run();
-  //}
+    if(player.canRun){
+      player.run();
+    } 
+  }
+  
+  // GUI
+  bt_captura.run();
+    
+  if(maker.ativado){
+    bt_criarBixo.run();
+    maker.run();
+    bt_brincar.run();
+  }
   
   //println("DT: "+getDeltaTime());
   //println("-----------------------");
@@ -200,13 +200,13 @@ void readXMLFile(){
   
 }//readXMLFile
 //*/
+
+
 // =================================================
-// CApture Tasks
+// Capture Tasks
 // =================================================
 
 void captureAction(){
-  //capVideo.read();
-
   movement = capVideo.get();
   
   movement.loadPixels(); // Make its pixels[] array available
@@ -350,7 +350,7 @@ void fastblur(PImage img,int radius)
   }
 }//fastblur
 
-/*
+
 void mouseReleased(){
   //println("clique");
   

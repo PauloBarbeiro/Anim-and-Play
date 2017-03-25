@@ -31,7 +31,7 @@ class BixoPlay{
   }
 
   public void run(){
-    //println("loop ---------------------------------------------");
+    println("loop ---------------------------------------------");
     for(int i=0 ; i<this.bixos.size() ; i++){
       Bixo tmp = (Bixo) this.bixos.get(i);
       tmp.enxame(this.bixos);
@@ -46,17 +46,18 @@ class BixoPlay{
   // Load XML FILE
   // ==================================================================
   public void reloadData(){
-    /*
+    
     this.clearData();
     
     try{
-      xmlInOut.loadElement("dados0.xml");
+      xmlInOut = loadXML("dados0.xml");
       println("Player :: Carregou XML com sucesso.");
     }
     catch(Exception e){
       println("ERRO: Ao carregar XML -> dados || "+e);
-      xmlEvent(new proxml.XMLElement("dados"));
+      //xmlEvent(new proxml.XMLElement("dados"));
     }//*/
+  
   }//reloadData
   
   private void clearData(){
