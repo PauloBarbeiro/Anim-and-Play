@@ -8,6 +8,9 @@ After that, the creature starts to move arround the screen, and the goal is to u
 The tool meant to support educators in the process to teach animation for their students. Many children can draw diferent creatures,
 and, with a projection, many children can play as well.
 
+[![Anim-and-Play in action](http://img.youtube.com/v1/TfOG2nGsWzM/0.jpg)](http://www.youtube.com/watch?v=TfOG2nGsWzM)
+[linkname](http://TfOG2nGsWzM)
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TfOG2nGsWzM" frameborder="0" allowfullscreen></iframe>
 
 + Developed with Processing
