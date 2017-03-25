@@ -330,16 +330,9 @@ class BixoMaker{
   }//salvarImagensNoDiretorio
   
   private void salvarDadosNoXML(){
-    //println("Salvar Dados no XML.");
-    //println(arr);
-//    String maskFinalString = "";
-//    for(int i=0 ; i<arr.length ; i++){
-//      maskFinalString += arr[i]+",";
-//    }
-//    println( maskFinalString );
+    /*
     qtdBixos++;
-        
-    //proxml.XMLElement monstros = xmlFile.getChild(0);
+    
     xmlFile.addAttribute("qtd",qtdBixos);
     //println("ok");
     
@@ -356,18 +349,12 @@ class BixoMaker{
     imagens.addAttribute("lista", listaFinal);
     monstro.addChild(imagens);
     
-//    proxml.XMLElement mascara = new proxml.XMLElement("mascara");
-//    proxml.XMLElement content = new proxml.XMLElement(maskFinalString);
-//    mascara.addChild(content);
-//    monstro.addChild(mascara);
-//    
     xmlFile.addChild(monstro);
-//    
-    xmlInOut.saveElement(xmlFile,"dados0.xml");
-//    
+  
+    xmlInOut.saveElement(xmlFile,"dados0.xml");    
     
     
-    //println("--- fim");
+    //*/
   }
 
   private void clearMaker(){
@@ -429,6 +416,7 @@ class BixoMaker{
   }
   
   void previewBixo(){
+    /*
     //println("===========================");
     //println("now:       "+millis());
     //println("antes:     "+this.previous_time);
@@ -469,8 +457,7 @@ class BixoMaker{
       
     //}
     //println("muleta 1: "+this.muleta);
-    
+    //*/
   }
 
 }//class
-

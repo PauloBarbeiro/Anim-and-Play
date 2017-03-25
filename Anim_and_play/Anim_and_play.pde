@@ -1,14 +1,14 @@
-import fullscreen.*;
-import japplemenubar.*;
+//import fullscreen.*;
+//import japplemenubar.*;
 
-import codeanticode.gsvideo.*;
-import proxml.*;
+import processing.video.*;
+//import proxml.*;
 
 
 
-GSCapture capVideo; // --------------- Captura de video
+Capture capVideo; // --------------- Captura de video
 
-FullScreen fs;      // --------------- FullScreen
+//FullScreen fs;      // --------------- FullScreen
 
 
 int thresholdLevel = 50;
@@ -20,8 +20,8 @@ int[] previousFrame;
 
 BixoMaker maker;                 //--- BIXOMAKER
 BixoPlay player;                 //--- BIXOPLAYER
-proxml.XMLElement xmlFile;
-XMLInOut xmlInOut;
+//proxml.XMLElement xmlFile;
+//XMLInOut xmlInOut;
 int qtdBixos;
 
 
@@ -39,17 +39,17 @@ int qtdBixos;
 //int margem = 20;
 
 //GUI
-Botao bt_captura;
-Botao bt_criarBixo;
-Botao bt_brincar;
-Botao bt_voltar;
+//Botao bt_captura;
+//Botao bt_criarBixo;
+//Botao bt_brincar;
+//Botao bt_voltar;
 
 
 void setup()
 {
 
   //size( 640, 480);
-  size( 800, 600);
+  size( 960, 540);
   //size(1024,768);
   //size(screen.width, screen.height);
   //println("Screen: "+screen.width+" X "+screen.height);
@@ -58,18 +58,39 @@ void setup()
   
     
   //----------------------------------------- GSCapture
-  capVideo = new GSCapture(this, 320,240, 24);
-  //opencv.allocate(320,240);
-  numPixels = capVideo.width * capVideo.height;
+  String[] cameras = Capture.list();
+  
+  if (cameras.length == 0) {
+    println("There are no cameras available for capture.");
+    exit();
+  } else {
+    println("Available cameras:");
+    for (int i = 0; i < cameras.length; i++) {
+      print("congif "+i+": ");println(cameras[i]);
+    }
+    
+    // The camera can be initialized directly using an 
+    // element from the array returned by list():
+    capVideo = new Capture(this, cameras[2]);//6 alradey a problem
+    capVideo.start();     
+  }
+  
+  //numPixels = capVideo.width * capVideo.height;
+  numPixels = 320 * 180;
+  println("NumPixels: "+numPixels);
+  
   // Create an array to store the previously captured frame
   previousFrame = new int[numPixels];
   //loadPixels();
-  movement = new PImage(320, 240);
+  movement = new PImage(320, 180);
+  
   
   //----------------------------------------- BIXOPLAYER
-  player = new BixoPlay();
+  //player = new BixoPlay();
+  
   
   //----------------------------------------- BIXOMAKER
+  /*
   xmlInOut = new XMLInOut(this);
   try{
     xmlInOut.loadElement("dados0.xml");
@@ -78,20 +99,25 @@ void setup()
   catch(Exception e){
     println("ERRO: Ao carregar XML -> dados || "+e);
     xmlEvent(new proxml.XMLElement("dados"));
-  }
+  }//*/
   maker = new BixoMaker(); 
   
+  
   // ---------------------------------------- GUI
+  /*
   bt_captura = new Botao(int(width*0.05), int(height*0.9) , 150,30 , 'f', "Criar Bixos");
   bt_criarBixo = new Botao( int(width*0.3), int(height*0.9) , 150,30, 'm', "Concluir");
   bt_brincar = new Botao ( int(width*0.5), int(height*0.9), 150,30, 'c', "Cancelar" );
   bt_voltar = new Botao(int(width*0.715), int(height*0.52) , 200,30 , 'v' , "Apagar último");
+  //*/
+  
   
   // ---------------------------------------- FullScreen
+  /*
   fs = new FullScreen(this);
   fs.setShortcutsEnabled(true);
   //fs.enter();
-
+  //*/
 }
 
 
@@ -101,34 +127,35 @@ void draw(){
   //background(200);
   //startDT();
   
-  
   if( capVideo.available() == true){
-    captureAction(false); // Captura, Diferenca, Remember
-    captureBlobs(false); // FastBlur, Deteccao, Desenho
+    capVideo.read();
+    //capVideo.resize(width,height);
+    captureAction(); // Captura, Diferenca, Remember
+    captureBlobs(); // FastBlur, Deteccao, Desenho
     
     if(!maker.ativado){
-      renderVideoCapture();
+      //renderVideoCapture();
     }
-    if(player.canRun){
-      player.run();
-    } 
+    //if(player.canRun){
+    //  player.run();
+    //} 
   }
-  
+  //image(capVideo, 0, 0);
   // GUI
-  bt_captura.run();
+  //bt_captura.run();
     
-  if(maker.ativado){
-    bt_criarBixo.run();
-    maker.run();
-    bt_brincar.run();
-  }
+  //if(maker.ativado){
+  //  bt_criarBixo.run();
+  //  maker.run();
+  //  bt_brincar.run();
+  //}
   
   //println("DT: "+getDeltaTime());
   //println("-----------------------");
 
 }//draw
 
-
+/*
 // =================================================
 // CONTEÚDO A SER EXIBIDO
 // =================================================
@@ -172,12 +199,13 @@ void readXMLFile(){
   //}//if
   
 }//readXMLFile
+//*/
 // =================================================
 // CApture Tasks
 // =================================================
 
-void captureAction(boolean output){
-  capVideo.read();
+void captureAction(){
+  //capVideo.read();
 
   movement = capVideo.get();
   
@@ -214,13 +242,16 @@ void captureAction(boolean output){
     if (movementSum > 0) {
       movement.updatePixels();
       //println(movementSum); // Print the total amount of movement to the console
-    }
+    }//*/
   
-  
-  if (output) image( movement, 0, 0 );
+  /*
+  if (true){
+    //println( movementSum );
+    image( movement, 0, 0 );
+  }//*/
 }
 
-void captureBlobs(boolean output){
+void captureBlobs(){
   fastblur(movement, 10);//2
 }
 
@@ -317,9 +348,9 @@ void fastblur(PImage img,int radius)
       yi+=w;
     }
   }
+}//fastblur
 
-}
-
+/*
 void mouseReleased(){
   //println("clique");
   
@@ -357,5 +388,4 @@ void keyPressed(){
     player.canRun = true;
   }
 }
-
-
+//*/

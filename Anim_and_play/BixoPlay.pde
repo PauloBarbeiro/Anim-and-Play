@@ -46,6 +46,7 @@ class BixoPlay{
   // Load XML FILE
   // ==================================================================
   public void reloadData(){
+    /*
     this.clearData();
     
     try{
@@ -55,20 +56,23 @@ class BixoPlay{
     catch(Exception e){
       println("ERRO: Ao carregar XML -> dados || "+e);
       xmlEvent(new proxml.XMLElement("dados"));
-    }
+    }//*/
   }//reloadData
   
   private void clearData(){
     this.bixos.clear();
   }
   
-  private void xmlEvent(proxml.XMLElement element){
+  private void xmlEvent(/*proxml.XMLElement element*/){
+    /*
     println("Disparado evento do XML");
     xmlFile = element;
     readXMLFile();
+    //*/
   }
   
   private void readXMLFile(){
+    /*
     xmlFile.printElementTree(" ");
     //proxml.XMLElement monstros;
     proxml.XMLElement monstro;
@@ -102,7 +106,7 @@ class BixoPlay{
       
       //player.canRun = true;
     //}//if
-    
+    //*/
   }//readXMLFile
   
   // ====================================================================
